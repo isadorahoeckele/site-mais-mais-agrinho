@@ -1,1 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgroSustentável</title>
 
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+<h1>AgroSustentável</h1>
+
+<nav>
+
+<button id="menu-btn">☰</button>
+
+<ul id="menu">
+
+<li><a href="#inicio">Início</a></li>
+<li><a href="#producao">Produção</a></li>
+<li><a href="#sustentabilidade">Sustentabilidade</a></li>
+<li><a href="#desafios">Desafios</a></li>
+<li><a href="#futuro">Futuro</a></li>
+<li><a href="#contato">Contato</a></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<section id="inicio" class="banner">
+
+<h2>Tecnologia e Sustentabilidade no Agronegócio</h2>
+
+<p>
+Como o agronegócio pode crescer economicamente sem comprometer
+os recursos naturais das futuras gerações?
+</p>
+
+<button onclick="scrollToSection('producao')">
+Explorar
+</button>
+
+</section>
+
+<section id="producao">
+
+<h2>Produção Agrícola</h2>
+
+<p>
+O agronegócio possui grande importância econômica,
+gerando empregos, exportações e desenvolvimento.
+</p>
+
+<div class="cards">
+
+<div class="card">
+<h3>Agricultura de Precisão</h3>
+<p>Uso de sensores e dados para otimizar produção.</p>
+</div>
+
+<div class="card">
+<h3>Irrigação Inteligente</h3>
+<p>Economia de água com monitoramento automático.</p>
+</div>
+
+<div class="card">
+<h3>Drones Agrícolas</h3>
+<p>Monitoramento das plantações e análise do solo.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="sustentabilidade">
+
+<h2>Sustentabilidade no Campo</h2>
+
+<ul>
+
+<li>Conservação do solo</li>
+
+<li>Redução do desperdício de água</li>
+
+<li>Uso de energia solar e renovável</li>
+
+<li>Recuperação de áreas degradadas</li>
+
+</ul>
+
+</section>
+
+<section id="desafios">
+
+<h2>Desafios Ambientais</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>Desmatamento</h3>
+
+<p>
+A expansão agrícola sem planejamento pode gerar
+perda da biodiversidade.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Uso da Água</h3>
+
+<p>
+O consumo excessivo exige tecnologias de gestão hídrica.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Carbono</h3>
+
+<p>
+Máquinas e atividades agrícolas podem aumentar emissões.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="futuro">
+
+<h2>Soluções e Futuro</h2>
+
+<p>
+
+A agricultura regenerativa, energias limpas e tecnologia
+são caminhos para equilibrar produção e preservação.
+
+</p>
+
+<h3>Calculadora Ambiental</h3>
+
+<input type="number"
+id="energia"
+placeholder="Consumo de energia (kWh)">
+
+<button onclick="calcularImpacto()">
+
+Calcular Impacto
+
+</button>
+
+<p id="resultado"></p>
+
+</section>
+
+<section id="quiz">
+
+<h2>Quiz Sustentável</h2>
+
+<p>
+
+Qual tecnologia reduz desperdício de água?
+
+</p>
+
+<button onclick="quiz('errado')">
+
+Drone agrícola
+
+</button>
+
+<button onclick="quiz('certo')">
+
+Irrigação inteligente
+
+</button>
+
+<p id="quizResultado"></p>
+
+</section>
+
+<section id="contato">
+
+<h2>Conscientização</h2>
+
+<p>
+
+Pequenas ações no presente ajudam a preservar
+os recursos naturais do futuro.
+
+</p>
+
+<form>
+
+<input
+type="text"
+placeholder="Nome"
+required>
+
+<input
+type="email"
+placeholder="E-mail"
+required>
+
+<textarea
+placeholder="Mensagem">
+</textarea>
+
+<button>
+
+Enviar
+
+</button>
+
+</form>
+
+</section>
+
+<footer>
+
+<p>
+
+AgroSustentável © 2026
+
+</p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
