@@ -1,244 +1,389 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AgroSustentável</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroSustentável - O Futuro do Campo</title>
+    <style>
+        /* ==========================================
+           ESTILOS GERAIS (CSS)
+           ========================================== */
+        :root {
+            --primary-color: #2e7d32; /* Verde Agro */
+            --secondary-color: #1565c0; /* Azul Água/Tecnologia */
+            --dark-color: #212121;
+            --light-color: #f5f5f5;
+            --accent-color: #ef6c00; /* Laranja Alerta/Soluções */
+        }
 
-<link rel="stylesheet" href="style.css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        /* Cabeçalho e Menu Responsivo */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--dark-color);
+            border-radius: 2px;
+        }
+
+        /* Banner Principal (Hero) */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://images.unsplash.com/photo-1592417817098-8f3d6eb19675?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #ffffff;
+            padding: 0 1rem;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s, background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #1b5e20;
+            transform: scale(1.05);
+        }
+
+        /* Seções de Conteúdo */
+        section {
+            padding: 5rem 5% 2rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 10px auto 0 auto;
+        }
+
+        /* Grid de Cards */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: translateY 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Seção Desafios (Estilo Alerta) */
+        #desafios .card h3 {
+            color: var(--accent-color);
+        }
+
+        /* Diferencial: Quiz Interativo */
+        .quiz-container {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .quiz-btn {
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            padding: 0.8rem;
+            border-radius: 5px;
+            text-align: left;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .quiz-btn:hover {
+            background-color: #e0e0e0;
+        }
+
+        /* Formulário de Contato */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* Animações simples */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsividade (Telas menores) */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                padding: 1rem;
+                box-shadow: 0 4px 5px rgba(0,0,0,0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-
-<h1>AgroSustentável</h1>
-
-<nav>
-
-<button id="menu-btn">☰</button>
-
-<ul id="menu">
-
-<li><a href="#inicio">Início</a></li>
-<li><a href="#producao">Produção</a></li>
-<li><a href="#sustentabilidade">Sustentabilidade</a></li>
-<li><a href="#desafios">Desafios</a></li>
-<li><a href="#futuro">Futuro</a></li>
-<li><a href="#contato">Contato</a></li>
-
-</ul>
-
-</nav>
-
-</header>
-
-<section id="inicio" class="banner">
-
-<h2>Tecnologia e Sustentabilidade no Agronegócio</h2>
-
-<p>
-Como o agronegócio pode crescer economicamente sem comprometer
-os recursos naturais das futuras gerações?
-</p>
-
-<button onclick="scrollToSection('producao')">
-Explorar
-</button>
-
-</section>
-
-<section id="producao">
-
-<h2>Produção Agrícola</h2>
-
-<p>
-O agronegócio possui grande importância econômica,
-gerando empregos, exportações e desenvolvimento.
-</p>
-
-<div class="cards">
-
-<div class="card">
-<h3>Agricultura de Precisão</h3>
-<p>Uso de sensores e dados para otimizar produção.</p>
-</div>
-
-<div class="card">
-<h3>Irrigação Inteligente</h3>
-<p>Economia de água com monitoramento automático.</p>
-</div>
-
-<div class="card">
-<h3>Drones Agrícolas</h3>
-<p>Monitoramento das plantações e análise do solo.</p>
-</div>
-
-</div>
-
-</section>
-
-<section id="sustentabilidade">
-
-<h2>Sustentabilidade no Campo</h2>
-
-<ul>
-
-<li>Conservação do solo</li>
-
-<li>Redução do desperdício de água</li>
-
-<li>Uso de energia solar e renovável</li>
-
-<li>Recuperação de áreas degradadas</li>
-
-</ul>
-
-</section>
-
-<section id="desafios">
-
-<h2>Desafios Ambientais</h2>
-
-<div class="cards">
-
-<div class="card">
-
-<h3>Desmatamento</h3>
-
-<p>
-A expansão agrícola sem planejamento pode gerar
-perda da biodiversidade.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>Uso da Água</h3>
-
-<p>
-O consumo excessivo exige tecnologias de gestão hídrica.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>Carbono</h3>
-
-<p>
-Máquinas e atividades agrícolas podem aumentar emissões.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="futuro">
-
-<h2>Soluções e Futuro</h2>
-
-<p>
-
-A agricultura regenerativa, energias limpas e tecnologia
-são caminhos para equilibrar produção e preservação.
-
-</p>
-
-<h3>Calculadora Ambiental</h3>
-
-<input type="number"
-id="energia"
-placeholder="Consumo de energia (kWh)">
-
-<button onclick="calcularImpacto()">
-
-Calcular Impacto
-
-</button>
-
-<p id="resultado"></p>
-
-</section>
-
-<section id="quiz">
-
-<h2>Quiz Sustentável</h2>
-
-<p>
-
-Qual tecnologia reduz desperdício de água?
-
-</p>
-
-<button onclick="quiz('errado')">
-
-Drone agrícola
-
-</button>
-
-<button onclick="quiz('certo')">
-
-Irrigação inteligente
-
-</button>
-
-<p id="quizResultado"></p>
-
-</section>
-
-<section id="contato">
-
-<h2>Conscientização</h2>
-
-<p>
-
-Pequenas ações no presente ajudam a preservar
-os recursos naturais do futuro.
-
-</p>
-
-<form>
-
-<input
-type="text"
-placeholder="Nome"
-required>
-
-<input
-type="email"
-placeholder="E-mail"
-required>
-
-<textarea
-placeholder="Mensagem">
-</textarea>
-
-<button>
-
-Enviar
-
-</button>
-
-</form>
-
-</section>
-
-<footer>
-
-<p>
-
-AgroSustentável © 2026
-
-</p>
-
-</footer>
-
-<script src="script.js"></script>
-
-</body>
-</html>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Agro<span>Sustentável</span></div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#producao">Produção</a></li>
+                <li><a href="#sustentabilidade">Sustentabilidade</a></li>
+                <li><a href="#desafios">Desafios</a></li>
+                <li><a href="#solucoes">Futuro</a></li>
+                <li><a href="#quiz">Quiz</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>Produzir com Consciência, Preservar o Amanhã</h1>
+        <p>Como o agronegócio pode crescer economicamente sem comprometer os recursos naturais das futuras gerações?</p>
+        <a href="#producao" class="btn">Descubra Como</a>
+    </section>
+
+    <section id="producao">
+        <h2 class="section-title">Produção Agrícola & Economia</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>Força Econômica</h3>
+                <p>O agronegócio é um dos principais motores da economia global, gerando empregos, impulsionando o PIB e garantindo a segurança alimentar de bilhões de pessoas.</p>
+            </div>
+            <div class="card">
+                <h3>Crescimento Exponencial</h3>
+                <p>Com a demanda global por alimentos subindo constantemente, o campo precisa produzir cada vez mais em espaços otimizados.</p>
+            </div>
+            <div class="card">
+                <h3>Tecnologia no Campo</h3>
+                <p>A integração de novas ferramentas digitais transforma a lida diária da fazenda, trazendo eficiência da semente à colheita.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="sustentabilidade" style="background-color: #eaedd5;">
+        <h2 class="section-title">Tecnologias Sustentáveis</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>Agricultura de Precisão</h3>
+                <p>Uso de sensores e GPS para aplicar insumos e fertilizantes no local correto e na quantidade exata, evitando desperdícios e contaminação.</p>
+            </div>
+            <div class="card">
+                <h3>Irrigação Inteligente</h3>
+                <p>Sistemas automatizados que medem a umidade do solo em tempo real, despejando água apenas quando e onde a planta realmente necessita.</p>
+            </div>
+            <div class="card">
+                <h3>Drones e Monitoramento</h3>
+                <p>Sobrevoos mapeiam pragas e falhas na lavoura rapidamente, permitindo ações pontuais sem a necessidade de pulverização total.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="desafios">
+        <h2 class="section-title">Desafios Ambientais</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>Pegada de Carbono</h3>
+                <p>As emissões de gases de efeito estufa provenientes do maquinário e do manejo animal desafiam o setor a buscar a neutralidade de carbono.</p>
+            </div>
+            <div class="card">
+                <h3>Escassez de Água</h3>
+                <p>A agricultura consome grande parte da água doce disponível. A gestão ineficiente coloca em risco o abastecimento de bacias hidrográficas.</p>
+            </div>
+            <div class="card">
+                <h3>Pressão por Desmatamento</h3>
+                <p>Expandir a fronteira agrícola destruindo florestas nativas desequilibra o clima, prejudicando o próprio regime de chuvas que a lavoura precisa.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="solucoes" style="background-color: #e3f2fd;">
+        <h2 class="section-title">Soluções e o Futuro</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3>Agricultura Regenerativa</h3>
+                <p>Foco na saúde do solo através do plantio direto, rotação de culturas e diminuição de arados pesados, recuperando a biodiversidade.</p>
+            </div>
+            <div class="card">
+                <h3>Energias Limpas</h3>
+                <p>Fazendas utilizando painéis solares e biodigestores (transformando dejetos em energia e biogás) para alcançar a autossuficiência energética.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="quiz">
+        <h2 class="section-title">Teste seus Conhecimentos</h2>
+        <div class="quiz-container">
+            <div id="quiz-box">
+                <h3 id="quiz-question">Qual tecnologia abaixo economiza água monitor
